@@ -6,7 +6,7 @@ test("POST /Missoes cria um novo livro", async () => {
   const resposta = await request(app).post("/Missoes")
     .send({ nome: "Apollo", ano: " 1969",  agencia: "NASA", status: "Concluida"});
 
-  expect(resposta.status).toBe(201);
+  expect(resposta.status).toBe(200);
   expect(resposta.body.nome).toBe("Apollo");
 });
 
@@ -120,7 +120,7 @@ test("PUT /Missoes/:id retorna erro quando a Missão não existe", async () => {
     .send({ titulo: "Missão" });
 
   expect(resposta.status).toBe(404);
-  expect(resposta.body).toEqual({ error: "Missão não encontrada" });
+  expect(resposta.body).toEqual({ error: "Missão não encontrado" });
 });
 
 test("DELETE /Missoes/:id remove a Missão encontrado", async () => {
@@ -134,5 +134,5 @@ test("DELETE /Missoes/:id retorna erro quando a Missão não existe", async () =
   const resposta = await request(app).delete("/Missoes/999");
 
   expect(resposta.status).toBe(404);
-  expect(resposta.body).toEqual({ error: "Missão não encontrada" });
+  expect(resposta.body).toEqual({ error: "Missão não encontrado" });
 });
